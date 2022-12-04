@@ -1,0 +1,16 @@
+.navbar :global {
+  background-color: #09357b;
+  height: 100px;
+
+  .navContainer {
+    height: 100%;
+    width: 60%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+
+    #title {
+      color: #ffffff;
+    }
+  }
+}
