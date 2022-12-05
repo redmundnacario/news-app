@@ -1,8 +1,6 @@
-import styles from '../styles/Home.module.scss'
-
 export default function Home() {
   return (
-    <div className={styles.container}>
+    <div className="pageContent container">
       <h1>home page</h1>
     </div>
   )

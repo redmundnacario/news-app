@@ -1,4 +1,4 @@
-@font-face {
+font-face {
   font-family: 'OpenSans';
   src: url('../asset/font/Merriweather-Regular.ttf');
   // src: url('../asset/OpenSans/OpenSans-Medium.ttf');
@@ -31,4 +31,10 @@ a {
     color: white;
     background: black;
   }
+}
+
+.pageContent {
+  // width: 60%;
+  margin: 0 auto;
+  height: calc(100vh - 200px);
 }

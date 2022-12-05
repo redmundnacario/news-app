@@ -2,8 +2,10 @@ import Head from 'next/head'
 import type { AppProps } from 'next/app'
 
 import Navbar from 'src/components/common/Navbar'
+import Footer from 'src/components/common/Footer'
 
 import '@styles/globals.scss'
+import '@styles/grid.scss'
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -18,19 +20,8 @@ export default function App({ Component, pageProps }: AppProps) {
       <main>
         <Navbar />
         <Component {...pageProps} />
+        <Footer />
       </main>
-      {/* <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <span className={styles.logo}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-          </span>
-        </a>
-      </footer> */}
     </>
   )
 }
