@@ -1,0 +1,13 @@
+@import 'src/styles/media_query';
+
+.mainStory {
+  height: 350px;
+}
+
+.sideStory {
+  height: calc(350px / 2);
+}
+
+.otherStory {
+  height: 300px;
+}

@@ -16,6 +16,10 @@
     "incremental": true,
     "baseUrl": ".",
     "paths": {
+      "@components/*": ["src/components/*"],
+      "@configs/*": ["src/configs/*"],
+      "@models/*": ["src/models/*"],
+      "@services/*": ["src/services/*"],
       "@styles/*": ["src/styles/*"]
     }
   },

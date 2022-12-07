@@ -1,8 +1,8 @@
 import Head from 'next/head'
 import type { AppProps } from 'next/app'
 
-import Navbar from 'src/components/common/Navbar'
-import Footer from 'src/components/common/Footer'
+import Navbar from 'src/components/layout/Navbar'
+import Footer from 'src/components/layout/Footer'
 
 import '@styles/globals.scss'
 import '@styles/grid.scss'
