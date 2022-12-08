@@ -3,9 +3,9 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { ArticleType } from '@models/entities/news'
-import { getArticle } from '@services/gaurdian'
-import { RootState } from '@redux/store'
 import { append, remove } from '@redux/reducers/bookmark'
+import { RootState } from '@redux/store'
+import { getArticle } from '@services/gaurdian'
 
 const Page = () => {
   const dispatch = useDispatch()

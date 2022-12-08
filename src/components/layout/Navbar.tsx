@@ -1,6 +1,8 @@
 import Link from 'next/link'
 import React from 'react'
 
+import SearchBar from '@components/common/SearchBar'
+
 import styles from '@styles/components/common/Navbar.module.scss'
 
 const Navbar = () => {
@@ -10,6 +12,7 @@ const Navbar = () => {
         <Link href={`/`}>
           <h1 id="title">The Peaks</h1>
         </Link>
+        <SearchBar />
       </div>
     </div>
   )

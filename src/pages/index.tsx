@@ -1,36 +1,75 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
 
-import { getCategoryNewsStories, getTopNewsStories } from '@services/gaurdian'
 import NewsSection from '@components/common/NewsSection'
-import { ArticleType } from '@models/entities/news'
-
-type SortType = 'newest' | 'oldest' | 'relevance'
+import SearchResults from '@components/common/SearchResults'
+import useSortArrayObjects from '@hooks/useSortArrayObjects'
+import { ArticleType, SortType } from '@models/entities/news'
+import { RootState } from '@redux/store'
+import {
+  getCategoryNewsStories,
+  getNewsBySearchKeyword,
+  getTopNewsStories,
+} from '@services/gaurdian'
 
 export const Page = () => {
+  const searchKeyword = useSelector(
+    (state: RootState) => state.searchKeyword.key
+  )
+
   const [newsList, setNewsList] = useState<ArticleType[]>([])
   const [otherNews, setOtherNews] = useState<ArticleType[]>([])
-  const [sorting] = useState<SortType>('newest')
-  const [section] = useState<string>('sport')
+  const [sorting, setSorting] = useState<SortType>('newest')
+  // const [section] = useState<string>('sport')
+
+  const { sortedData: sortedNewsList } = useSortArrayObjects({
+    data: newsList,
+    sortType: sorting,
+    sortField: 'firstPublicationDate',
+  })
+
+  const handleOnChangeSortType = useCallback((value: SortType) => {
+    setSorting(value)
+  }, [])
 
   useEffect(() => {
-    const fetchData = async () => {
-      const _newsList = await getTopNewsStories(sorting)
+    const fetchBySearch = async () => {
+      const _newsList = await getNewsBySearchKeyword(searchKeyword)
       setNewsList(_newsList)
     }
-    void fetchData()
-  }, [sorting])
 
-  useEffect(() => {
     const fetchData = async () => {
-      const _otherNews = await getCategoryNewsStories(section)
+      const _newsList = await getTopNewsStories()
+      setNewsList(_newsList)
+    }
+
+    const fetchOtherNews = async () => {
+      const _otherNews = await getCategoryNewsStories()
       setOtherNews(_otherNews)
     }
-    void fetchData()
-  }, [section])
+
+    if (searchKeyword !== '') {
+      void fetchBySearch()
+    } else {
+      void fetchData()
+      void fetchOtherNews()
+    }
+  }, [searchKeyword])
 
   return (
     <div className="pageContent container">
-      <NewsSection newsList={newsList} otherNews={otherNews} />
+      {searchKeyword === '' ? (
+        <NewsSection
+          newsList={sortedNewsList}
+          otherNews={otherNews}
+          handleOnChangeSortType={handleOnChangeSortType}
+        />
+      ) : (
+        <SearchResults
+          newsList={sortedNewsList}
+          handleOnChangeSortType={handleOnChangeSortType}
+        />
+      )}
     </div>
   )
 }

@@ -1,7 +1,8 @@
 import { useRouter } from 'next/router'
 import React, { FC } from 'react'
 
-import { ArticleType } from '@models/entities/news'
+import { ArticleType, SortType } from '@models/entities/news'
+import Dropdown from './Dropdown'
 import NewsCard from './NewsCard'
 
 import styles from '@styles/components/common/NewsSection.module.scss'
@@ -9,10 +10,11 @@ import styles from '@styles/components/common/NewsSection.module.scss'
 type NewsSectionPropsType = {
   newsList: ArticleType[]
   otherNews: ArticleType[]
+  handleOnChangeSortType: (value: SortType) => void
 }
 
 const NewsSection: FC<NewsSectionPropsType> = (props) => {
-  const { newsList, otherNews } = props
+  const { newsList, otherNews, handleOnChangeSortType } = props
   console.log(newsList)
   const router = useRouter()
 
@@ -20,6 +22,7 @@ const NewsSection: FC<NewsSectionPropsType> = (props) => {
     <>
       <div className="row">
         <button onClick={() => router.push('/bookmark')}>VIEW BOOKMARK</button>
+        <Dropdown handleOnChange={handleOnChangeSortType} />
         <div className="row">
           <h1>Top Stories</h1>
         </div>

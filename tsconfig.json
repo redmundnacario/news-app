@@ -18,6 +18,7 @@
     "paths": {
       "@components/*": ["src/components/*"],
       "@configs/*": ["src/configs/*"],
+      "@hooks/*": ["src/hooks/*"],
       "@models/*": ["src/models/*"],
       "@services/*": ["src/services/*"],
       "@redux/*": ["src/redux/*"],

@@ -3,6 +3,7 @@ import { persistReducer, persistStore } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 
 import bookmarkReducer from './reducers/bookmark'
+import searchKeywordReducer from './reducers/searchKeyword'
 
 const persistConfig = {
   key: 'root',
@@ -14,6 +15,7 @@ const persistedReducer = persistReducer(persistConfig, bookmarkReducer)
 export const store = configureStore({
   reducer: {
     bookmark: persistedReducer,
+    searchKeyword: searchKeywordReducer,
   },
   middleware: getDefaultMiddleware({
     serializableCheck: false,

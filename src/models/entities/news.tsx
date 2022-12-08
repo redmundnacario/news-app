@@ -30,3 +30,5 @@ export type ArticleType = {
   thumbnail: string
   firstPublicationDate: string
 }
+
+export type SortType = 'newest' | 'oldest'
