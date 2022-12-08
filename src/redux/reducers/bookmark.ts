@@ -12,7 +12,10 @@ export const bookmarkSlice = createSlice({
       state.articleList.push(action.payload)
     },
     remove: (state, action: PayloadAction<ArticleType>) => {
-      state.articleList.filter((article) => article.id !== action.payload.id)
+      const newList = state.articleList.filter(
+        (article) => article.id !== action.payload.id
+      )
+      state.articleList = newList
     },
   },
 })

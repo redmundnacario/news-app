@@ -11,8 +11,6 @@ type NewsCardPropsType = {
 
 const NewsCard: FC<NewsCardPropsType> = (props) => {
   const { data } = props
-  // const splittedlink = data.id.split('/')
-  // const newLink = splittedlink[splittedlink.length - 1]
 
   return (
     <Link href={`/article/${data.id}`}>

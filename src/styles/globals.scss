@@ -36,5 +36,5 @@ a {
 .pageContent {
   // width: 60%;
   margin: 0 auto;
-  height: calc(100vh - 200px);
+  min-height: calc(100vh - 200px);
 }

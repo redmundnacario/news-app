@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import type { AppProps } from 'next/app'
-import { store } from '@redux/store.js'
+import { store } from '@redux/store'
 import { Provider } from 'react-redux'
 
 import Navbar from 'src/components/layout/Navbar'

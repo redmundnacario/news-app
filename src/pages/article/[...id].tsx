@@ -1,15 +1,48 @@
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 
 import { ArticleType } from '@models/entities/news'
 import { getArticle } from '@services/gaurdian'
+import { RootState } from '@redux/store'
+import { append, remove } from '@redux/reducers/bookmark'
 
 const Page = () => {
+  const dispatch = useDispatch()
+  const bookmark = useSelector((state: RootState) => state.bookmark.articleList)
+  console.log(bookmark)
+  const [isBookmarked, setIsBookmarked] = useState<boolean | undefined>(
+    undefined
+  )
+
   const router = useRouter()
   const { id } = router.query
   const newLink = id ? (typeof id === 'object' ? id.join('/') : id) : undefined
 
   const [article, setArticle] = useState<ArticleType | undefined>(undefined)
+
+  const handleAddOrRemoveBookmark = () => {
+    if (article) {
+      if (isBookmarked) {
+        dispatch(remove(article))
+      } else {
+        dispatch(append(article))
+      }
+    }
+  }
+
+  useEffect(() => {
+    if (article) {
+      const _isBookmarkedArray = bookmark.find(
+        (_article) => _article.id === article.id
+      )
+      if (_isBookmarkedArray) {
+        setIsBookmarked(true)
+      } else {
+        setIsBookmarked(false)
+      }
+    }
+  }, [article, bookmark])
 
   useEffect(() => {
     if (newLink) {
@@ -25,6 +58,16 @@ const Page = () => {
     <div className="pageContent container">
       <div className="row">
         <div className="co-lg-9">
+          <button
+            onClick={() => handleAddOrRemoveBookmark()}
+            style={
+              isBookmarked
+                ? { backgroundColor: 'red' }
+                : { backgroundColor: 'green' }
+            }
+          >
+            {isBookmarked ? 'REMOVE BOOKMARK' : 'ADD BOOKMARK'}
+          </button>
           <p>{article.firstPublicationDate}</p>
           <h1>{article.headline}</h1>
           <p>{article.trailText}</p>
@@ -34,11 +77,11 @@ const Page = () => {
       <div className="row">
         <div
           dangerouslySetInnerHTML={{ __html: article.body }}
-          className="col-lg-9"
+          className="col-lg-8"
         ></div>
         <div
           dangerouslySetInnerHTML={{ __html: article.main }}
-          className="col-lg-3"
+          className="col-lg-4"
         ></div>
       </div>
     </div>

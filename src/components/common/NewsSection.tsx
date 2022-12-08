@@ -12,9 +12,7 @@ type NewsSectionPropsType = {
 
 const NewsSection: FC<NewsSectionPropsType> = (props) => {
   const { newsList, otherNews } = props
-  console.log(newsList)
-  // console.log(otherNews)
-  return newsList.length ? (
+  return newsList.length && otherNews.length ? (
     <>
       <div className="row">
         <div className="row">
