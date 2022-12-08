@@ -2,6 +2,7 @@ import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
+import Spinner from '@components/common/Spinner'
 import { ArticleType } from '@models/entities/news'
 import { append, remove } from '@redux/reducers/bookmark'
 import { RootState } from '@redux/store'
@@ -86,7 +87,7 @@ const Page = () => {
       </div>
     </div>
   ) : (
-    <h1>loading</h1>
+    <Spinner />
   )
 }
 

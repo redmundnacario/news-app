@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux'
 
 import NewsCard from '@components/common/NewsCard'
 import Dropdown from '@components/common/Dropdown'
+import Spinner from '@components/common/Spinner'
 import useSortArrayObjects from '@hooks/useSortArrayObjects'
 import { SortType } from '@models/entities/news'
 import { RootState } from '@redux/store'
@@ -40,7 +41,7 @@ const Page = () => {
       </div>
     </div>
   ) : (
-    <p>Loading</p>
+    <Spinner />
   )
 }
 

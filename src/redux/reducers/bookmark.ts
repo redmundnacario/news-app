@@ -20,7 +20,6 @@ export const bookmarkSlice = createSlice({
   },
 })
 
-// Action creators are generated for each case reducer function
 export const { append, remove } = bookmarkSlice.actions
 
 export default bookmarkSlice.reducer

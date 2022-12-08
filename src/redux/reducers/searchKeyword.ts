@@ -13,7 +13,6 @@ export const searchKeywordSlice = createSlice({
   },
 })
 
-// Action creators are generated for each case reducer function
 export const { setSearchKeyword } = searchKeywordSlice.actions
 
 export default searchKeywordSlice.reducer

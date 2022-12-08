@@ -4,6 +4,7 @@ import React, { FC } from 'react'
 import { ArticleType, SortType } from '@models/entities/news'
 import Dropdown from './Dropdown'
 import NewsCard from './NewsCard'
+import Spinner from './Spinner'
 
 import styles from '@styles/components/common/NewsSection.module.scss'
 
@@ -77,7 +78,7 @@ const NewsSection: FC<NewsSectionPropsType> = (props) => {
       </div>
     </>
   ) : (
-    <div>Loading</div>
+    <Spinner />
   )
 }
 export default NewsSection

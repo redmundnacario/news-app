@@ -4,7 +4,7 @@ export const getTopNewsStories = async (
   sorting = 'newest'
 ): Promise<ArticleType[]> => {
   const result = await fetch(
-    `https://content.guardianapis.com/news?order-by=${sorting}&page-size=8&show-fields=headline,trailText,main,body,firstPublicationDate,byline,thumbnail&production-office=us&api-key=${process.env.NEXT_PUBLIC_GUARDIAN_API_KEY}`,
+    `https://content.guardianapis.com/search?q=news&order-by=${sorting}&page-size=8&show-fields=headline,trailText,main,body,firstPublicationDate,byline,thumbnail&production-office=us&api-key=${process.env.NEXT_PUBLIC_GUARDIAN_API_KEY}`,
     {
       headers: {
         'Content-type': 'application/json',
@@ -77,7 +77,7 @@ export const getCategoryNewsStories = async (
   section = 'sport'
 ): Promise<ArticleType[]> => {
   const result = await fetch(
-    `https://content.guardianapis.com/${section}?order-by=newest&page-size=3&show-fields=headline,trailText,main,body,firstPublicationDate,byline,thumbnail&production-office=us&api-key=${process.env.NEXT_PUBLIC_GUARDIAN_API_KEY}`,
+    `https://content.guardianapis.com/search?q=${section}&order-by=newest&page-size=3&show-fields=headline,trailText,main,body,firstPublicationDate,byline,thumbnail&production-office=us&api-key=${process.env.NEXT_PUBLIC_GUARDIAN_API_KEY}`,
     {
       headers: {
         'Content-type': 'application/json',

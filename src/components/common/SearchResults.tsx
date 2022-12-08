@@ -3,6 +3,7 @@ import React, { FC } from 'react'
 
 import Dropdown from './Dropdown'
 import NewsCard from './NewsCard'
+import Spinner from './Spinner'
 
 import styles from '@styles/components/common/NewsSection.module.scss'
 
@@ -28,7 +29,7 @@ const SearchResults: FC<SearchResultsPropsType> = (props) => {
       </div>
     </div>
   ) : (
-    <p>Loading</p>
+    <Spinner />
   )
 }
 
