@@ -20,6 +20,7 @@
       "@configs/*": ["src/configs/*"],
       "@models/*": ["src/models/*"],
       "@services/*": ["src/services/*"],
+      "@redux/*": ["src/redux/*"],
       "@styles/*": ["src/styles/*"]
     }
   },

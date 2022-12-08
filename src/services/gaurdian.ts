@@ -55,5 +55,5 @@ export const getArticle = async (id: string): Promise<ArticleType> => {
       throw new Error('Something went wrong in fetching article')
     })
 
-  return result
+  return { id, ...result }
 }

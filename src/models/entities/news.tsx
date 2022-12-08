@@ -17,6 +17,7 @@ export type NewsType = {
 }
 
 export type ArticleType = {
+  id: string
   headline: string
   trailText: string
   byline: string
