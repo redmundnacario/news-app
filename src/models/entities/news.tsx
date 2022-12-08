@@ -3,7 +3,11 @@ export type NewsType = {
   fields: {
     headline: string
     trailText: string
+    byline: string
+    main: string
+    body: string
     thumbnail: string
+    firstPublicationDate: string
   }
   id: string
   isHosted: boolean
@@ -23,5 +27,6 @@ export type ArticleType = {
   byline: string
   main: string
   body: string
+  thumbnail: string
   firstPublicationDate: string
 }

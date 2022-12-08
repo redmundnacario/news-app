@@ -2,13 +2,13 @@ import { useEffect, useState } from 'react'
 
 import { getCategoryNewsStories, getTopNewsStories } from '@services/gaurdian'
 import NewsSection from '@components/common/NewsSection'
-import { NewsType } from '@models/entities/news'
+import { ArticleType } from '@models/entities/news'
 
 type SortType = 'newest' | 'oldest' | 'relevance'
 
 export const Page = () => {
-  const [newsList, setNewsList] = useState<NewsType[]>([])
-  const [otherNews, setOtherNews] = useState<NewsType[]>([])
+  const [newsList, setNewsList] = useState<ArticleType[]>([])
+  const [otherNews, setOtherNews] = useState<ArticleType[]>([])
   const [sorting] = useState<SortType>('newest')
   const [section] = useState<string>('sport')
 

@@ -1,20 +1,25 @@
+import { useRouter } from 'next/router'
 import React, { FC } from 'react'
 
-import { NewsType } from '@models/entities/news'
+import { ArticleType } from '@models/entities/news'
 import NewsCard from './NewsCard'
 
 import styles from '@styles/components/common/NewsSection.module.scss'
 
 type NewsSectionPropsType = {
-  newsList: NewsType[]
-  otherNews: NewsType[]
+  newsList: ArticleType[]
+  otherNews: ArticleType[]
 }
 
 const NewsSection: FC<NewsSectionPropsType> = (props) => {
   const { newsList, otherNews } = props
+  console.log(newsList)
+  const router = useRouter()
+
   return newsList.length && otherNews.length ? (
     <>
       <div className="row">
+        <button onClick={() => router.push('/bookmark')}>VIEW BOOKMARK</button>
         <div className="row">
           <h1>Top Stories</h1>
         </div>

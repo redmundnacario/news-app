@@ -1,12 +1,12 @@
 /* eslint-disable @next/next/no-img-element */
-import { NewsType } from '@models/entities/news'
+import { ArticleType } from '@models/entities/news'
 import React, { FC } from 'react'
 
 import styles from '@styles/components/common/NewsCard.module.scss'
 import Link from 'next/link'
 
 type NewsCardPropsType = {
-  data: NewsType
+  data: ArticleType
 }
 
 const NewsCard: FC<NewsCardPropsType> = (props) => {
@@ -18,12 +18,12 @@ const NewsCard: FC<NewsCardPropsType> = (props) => {
         <div
           className={`row ${styles.image}`}
           style={{
-            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.3)), url(${data.fields.thumbnail})`,
+            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.3)), url(${data.thumbnail})`,
           }}
         ></div>
         <div className={styles.newsCardFooter}>
-          <span>{data.fields.headline}</span>
-          <span>{data.fields.trailText}</span>
+          <span>{data.headline}</span>
+          <span>{data.trailText}</span>
         </div>
       </div>
     </Link>

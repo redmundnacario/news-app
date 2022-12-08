@@ -10,7 +10,7 @@ import { append, remove } from '@redux/reducers/bookmark'
 const Page = () => {
   const dispatch = useDispatch()
   const bookmark = useSelector((state: RootState) => state.bookmark.articleList)
-  console.log(bookmark)
+
   const [isBookmarked, setIsBookmarked] = useState<boolean | undefined>(
     undefined
   )
