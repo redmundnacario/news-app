@@ -27,15 +27,17 @@ const Page = () => {
 
   return bookmark ? (
     <div className="pageContent container">
-      <Dropdown handleOnChange={handleOnChangeSortType} />
-      <h1>All Bookmark</h1>
+      <div className="row px-1">
+        <h1>All Bookmark</h1>
+        <Dropdown handleOnChange={handleOnChangeSortType} />
+      </div>
       <div className="row">
         {sortedBookmark.map((_bookmark) => (
           <div
             key={_bookmark.id}
-            className={`col-md-4 col-sm-12 ${styles.mainStory}`}
+            className={`col-lg-4 col-sm-12 px-1 mb-2 ${styles.otherStory}`}
           >
-            <NewsCard data={_bookmark} />
+            <NewsCard data={_bookmark} hideTrailText={true} />
           </div>
         ))}
       </div>

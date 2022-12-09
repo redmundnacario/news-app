@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
@@ -7,6 +8,8 @@ import { ArticleType } from '@models/entities/news'
 import { append, remove } from '@redux/reducers/bookmark'
 import { RootState } from '@redux/store'
 import { getArticle } from '@services/gaurdian'
+
+import styles from '@styles/article.module.scss'
 
 const Page = () => {
   const dispatch = useDispatch()
@@ -55,10 +58,31 @@ const Page = () => {
     }
   }, [newLink])
 
+  // console.log(article?.main)
+
+  const [image, setImage] = useState<{ src: string; alt: string } | undefined>(
+    undefined
+  )
+  useEffect(() => {
+    if (article?.main) {
+      const doc = new DOMParser().parseFromString(article.main, 'text/xml')
+      const img = doc.firstChild?.firstChild?.nextSibling
+      if (img) {
+        const src = (img as Element).getAttribute('src')
+        const alt = (img as Element).getAttribute('alt')
+        if (src && alt) {
+          setImage({ src, alt })
+        }
+      }
+    }
+  }, [article?.main])
+
+  console.log(image)
+
   return article ? (
-    <div className="pageContent container">
-      <div className="row">
-        <div className="co-lg-9">
+    <div className="pageContent container px-1">
+      <div className={`row mb-1 mt-2 ${styles.verdanaText}`}>
+        <div className={`col-lg-8 ${styles.titleContainer}`}>
           <button
             onClick={() => handleAddOrRemoveBookmark()}
             style={
@@ -70,20 +94,22 @@ const Page = () => {
             {isBookmarked ? 'REMOVE BOOKMARK' : 'ADD BOOKMARK'}
           </button>
           <p>{article.firstPublicationDate}</p>
-          <h1>{article.headline}</h1>
-          <p>{article.trailText}</p>
+          <h1 className={styles.title}>{article.headline}</h1>
+          <h2 className={styles.title}>{article.trailText}</h2>
           <p>Author: {article.byline}</p>
         </div>
       </div>
-      <div className="row">
+      <div className={`row mb-2 ${styles.verdanaText}`}>
         <div
           dangerouslySetInnerHTML={{ __html: article.body }}
-          className="col-lg-8"
+          className={`col-lg-8 ${styles.verdanaText}`}
         ></div>
-        <div
-          dangerouslySetInnerHTML={{ __html: article.main }}
-          className="col-lg-4"
-        ></div>
+        {image && (
+          <div className="col-lg-4 px-1">
+            <img src={image.src} alt={image.alt} className={styles.image} />
+            <p className={styles.alt}>{image.alt}</p>
+          </div>
+        )}
       </div>
     </div>
   ) : (
