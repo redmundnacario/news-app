@@ -58,8 +58,6 @@ const Page = () => {
     }
   }, [newLink])
 
-  // console.log(article?.main)
-
   const [image, setImage] = useState<{ src: string; alt: string } | undefined>(
     undefined
   )
@@ -77,19 +75,13 @@ const Page = () => {
     }
   }, [article?.main])
 
-  console.log(image)
-
   return article ? (
-    <div className="pageContent container px-1">
+    <div className="pageContent container px-1 mt-1">
       <div className={`row mb-1 mt-2 ${styles.verdanaText}`}>
         <div className={`col-lg-8 ${styles.titleContainer}`}>
           <button
+            className={styles.actionButton}
             onClick={() => handleAddOrRemoveBookmark()}
-            style={
-              isBookmarked
-                ? { backgroundColor: 'red' }
-                : { backgroundColor: 'green' }
-            }
           >
             {isBookmarked ? 'REMOVE BOOKMARK' : 'ADD BOOKMARK'}
           </button>

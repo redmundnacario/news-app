@@ -1,0 +1,25 @@
+@import 'src/styles/media_query';
+
+.inputSelect {
+  border: none;
+  background-color: #ffffff;
+  border-bottom: 1px solid #000000;
+  padding: 6px 12px 6px 2px;
+  font-size: 14px;
+  cursor: pointer;
+
+  ::hover {
+    border: none;
+  }
+  :focus,
+  :active {
+    outline: none;
+  }
+
+  @include sm {
+    width: fit-content;
+  }
+  @include md {
+    width: 12vh;
+  }
+}

@@ -5,30 +5,20 @@
 }
 
 .sideStories {
-  @include sm {
-    height: 350px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 2fr 1fr;
-    row-gap: 2rem;
-  }
+  height: 350px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 2fr 1fr;
+  row-gap: 1rem;
+
+  // @include md {
+  // }
 
   @include lg {
+    row-gap: 2rem;
     height: 400px;
-    // display: grid;
-    // grid-template-columns: 1fr 1fr;
-    // grid-template-rows: 2fr 1fr;
-    // row-gap: 1rem;
   }
 }
-
-// .sideStory {
-//   height: 300px;
-// }
-
-// .hiddenImageStory {
-//   height: 100%;
-// }
 
 .otherStory {
   height: 350px;

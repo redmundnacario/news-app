@@ -22,6 +22,14 @@
   }
 }
 
+.col {
+  width: 100%;
+}
+
+.col-6 {
+  width: 50%;
+}
+
 .row {
   display: flex;
   flex-wrap: wrap;

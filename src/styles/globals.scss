@@ -44,17 +44,16 @@ a {
 // paddings
 
 .px-1 {
-  padding-left: 1rem;
   padding-right: 1rem;
+  padding-left: 1rem;
 }
 
 .pb-1 {
-  @include sm {
-    padding-bottom: 1rem;
-  }
-  @include lg {
-    padding-bottom: 0;
-  }
+  padding-bottom: 1rem;
+}
+
+.mt-1 {
+  margin-top: 2rem;
 }
 
 .mt-2 {
@@ -62,7 +61,10 @@ a {
 }
 
 .mb-2 {
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
+  @include md {
+    margin-bottom: 2rem;
+  }
 }
 
 .mb-1 {

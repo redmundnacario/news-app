@@ -1,0 +1,32 @@
+@import 'src/styles/media_query';
+
+.container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.actionContainer {
+  display: flex;
+  align-items: center;
+  height: fit-content;
+  margin: 0;
+  margin-bottom: 2rem;
+
+  @include sm {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    margin: auto 0;
+    // margin-bottom: 1rem;
+  }
+}
+
+.actionButton {
+  border: none;
+  margin-right: 1.5rem;
+  background-color: #09357b;
+  color: #ffffff;
+  padding: 6px 12px 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
