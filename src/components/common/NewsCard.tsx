@@ -7,23 +7,33 @@ import Link from 'next/link'
 
 type NewsCardPropsType = {
   data: ArticleType
+  hideTrailText?: boolean
+  hideImage?: boolean
 }
 
 const NewsCard: FC<NewsCardPropsType> = (props) => {
-  const { data } = props
+  const { data, hideTrailText = false, hideImage = false } = props
 
   return (
     <Link href={`/article/${data.id}`}>
       <div className={styles.newsCard}>
         <div
           className={`row ${styles.image}`}
-          style={{
-            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.3)), url(${data.thumbnail})`,
-          }}
+          style={
+            !hideImage
+              ? {
+                  backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.3)), url(${data.thumbnail})`,
+                }
+              : {}
+          }
         ></div>
-        <div className={styles.newsCardFooter}>
-          <span>{data.headline}</span>
-          <span>{data.trailText}</span>
+        <div
+          className={
+            hideImage ? styles.newsCardFooterHiddenImage : styles.newsCardFooter
+          }
+        >
+          <p>{data.headline}</p>
+          {!hideTrailText && <span>{data.trailText}</span>}
         </div>
       </div>
     </Link>

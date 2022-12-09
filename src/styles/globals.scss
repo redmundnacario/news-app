@@ -1,7 +1,9 @@
+@import 'media_query';
+
 font-face {
-  font-family: 'OpenSans';
+  font-family: 'Merriweather';
   src: url('../asset/font/Merriweather-Regular.ttf');
-  // src: url('../asset/OpenSans/OpenSans-Medium.ttf');
+  src: url('../asset/font/Merriweather-Bold.ttf');
   // font-weight: 400;
   font-style: normal;
 }
@@ -20,6 +22,7 @@ a {
 }
 
 * {
+  font-family: 'MerriWeather';
   box-sizing: border-box;
 }
 
@@ -37,4 +40,24 @@ a {
   // width: 60%;
   margin: 0 auto;
   min-height: calc(100vh - 200px);
+}
+
+// paddings
+
+.py-1 {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.pb-1 {
+  @include sm {
+    padding-bottom: 1rem;
+  }
+  @include lg {
+    padding-bottom: 0;
+  }
+}
+
+.mb-2 {
+  margin-bottom: 2rem;
 }

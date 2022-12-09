@@ -21,59 +21,66 @@ const NewsSection: FC<NewsSectionPropsType> = (props) => {
 
   return newsList.length && otherNews.length ? (
     <>
-      <div className="row">
-        <button onClick={() => router.push('/bookmark')}>VIEW BOOKMARK</button>
-        <Dropdown handleOnChange={handleOnChangeSortType} />
-        <div className="row">
+      <div className="row mb-2">
+        <div className="row py-1">
           <h1>Top Stories</h1>
+          <button onClick={() => router.push('/bookmark')}>
+            VIEW BOOKMARK
+          </button>
+          <Dropdown handleOnChange={handleOnChangeSortType} />
         </div>
-        <div className="row">
-          <div className={`col-md-6 col-sm-12 ${styles.mainStory}`}>
+        <div className="row mb-2">
+          <div className={`py-1 col-lg-6 col-sm-12 pb-1 ${styles.mainStory}`}>
             <NewsCard data={newsList[0]} />
           </div>
-          <div className="col-md-6 col-sm-12">
-            <div className="row">
-              <div className={`col-md-6 col-sm-12 ${styles.sideStory}`}>
-                <NewsCard data={newsList[1]} />
-              </div>
-              <div className={`col-md-6 col-sm-12 ${styles.sideStory}`}>
-                <NewsCard data={newsList[2]} />
-              </div>
+          <div className={`col-lg-6 col-sm-12 ${styles.sideStories}`}>
+            <div className={`py-1 col-sm-12 pb-1 ${styles.sideStory}`}>
+              <NewsCard data={newsList[1]} hideTrailText={true} />
             </div>
-            <div className="row">
-              <div className={`col-md-6 col-sm-12 ${styles.sideStory}`}>
-                <NewsCard data={newsList[3]} />
-              </div>
-              <div className={`col-md-6 col-sm-12 ${styles.sideStory}`}>
-                <NewsCard data={newsList[4]} />
-              </div>
+            <div className={`py-1 col-sm-12 pb-1 ${styles.sideStory}`}>
+              <NewsCard data={newsList[2]} hideTrailText={true} />
+            </div>
+
+            <div className={`py-1 col-sm-12 pb-1 ${styles.hiddenImageStory}`}>
+              <NewsCard
+                data={newsList[3]}
+                hideTrailText={true}
+                hideImage={true}
+              />
+            </div>
+            <div className={`py-1 col-sm-12 pb-1 ${styles.hiddenImageStory}`}>
+              <NewsCard
+                data={newsList[4]}
+                hideTrailText={true}
+                hideImage={true}
+              />
             </div>
           </div>
         </div>
         <div className="row">
-          <div className={`col-md-4 col-sm-12 ${styles.otherStory}`}>
+          <div className={`py-1 col-sm-12 col-xl-4 pb-1 ${styles.otherStory}`}>
             <NewsCard data={newsList[5]} />
           </div>
-          <div className={`col-md-4 col-sm-12 ${styles.otherStory}`}>
+          <div className={`py-1 col-sm-12 col-xl-4 pb-1 ${styles.otherStory}`}>
             <NewsCard data={newsList[6]} />
           </div>
-          <div className={`col-md-4 col-sm-12 ${styles.otherStory}`}>
+          <div className={`py-1 col-sm-12 col-xl-4 pb-1 ${styles.otherStory}`}>
             <NewsCard data={newsList[7]} />
           </div>
         </div>
       </div>
-      <div className="row">
-        <div className="row">
+      <div className="row mb-2">
+        <div className="row py-1">
           <h1>Sports</h1>
         </div>
-        <div className={`col-md-4 col-sm-12 ${styles.mainStory}`}>
-          <NewsCard data={otherNews[0]} />
+        <div className={`py-1 col-sm-12 col-xl-4 pb-1 ${styles.otherStory}`}>
+          <NewsCard data={otherNews[0]} hideTrailText={true} />
         </div>
-        <div className={`col-md-4 col-sm-12 ${styles.mainStory}`}>
-          <NewsCard data={otherNews[1]} />
+        <div className={`py-1 col-sm-12 col-xl-4 pb-1 ${styles.otherStory}`}>
+          <NewsCard data={otherNews[1]} hideTrailText={true} />
         </div>
-        <div className={`col-md-4 col-sm-12 ${styles.mainStory}`}>
-          <NewsCard data={otherNews[2]} />
+        <div className={`py-1 col-sm-12 col-xl-4 pb-1 ${styles.otherStory}`}>
+          <NewsCard data={otherNews[2]} hideTrailText={true} />
         </div>
       </div>
     </>

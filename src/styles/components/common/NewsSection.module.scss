@@ -1,13 +1,35 @@
 @import 'src/styles/media_query';
 
 .mainStory {
-  height: 350px;
+  height: 400px;
 }
 
-.sideStory {
-  height: calc(350px / 2);
+.sideStories {
+  @include sm {
+    height: 350px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 2fr 1fr;
+    row-gap: 1rem;
+  }
+
+  @include lg {
+    height: 400px;
+    // display: grid;
+    // grid-template-columns: 1fr 1fr;
+    // grid-template-rows: 2fr 1fr;
+    // row-gap: 1rem;
+  }
 }
+
+// .sideStory {
+//   height: 300px;
+// }
+
+// .hiddenImageStory {
+//   height: 100%;
+// }
 
 .otherStory {
-  height: 300px;
+  height: 350px;
 }
