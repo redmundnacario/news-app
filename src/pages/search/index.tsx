@@ -1,13 +1,20 @@
+import { useRouter } from 'next/router'
 import { useCallback, useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
 
-import NewsSection from '@components/common/NewsSection'
+import SearchResults from '@components/common/SearchResults'
 import useSortArrayObjects from '@hooks/useSortArrayObjects'
 import { ArticleType, SortType } from '@models/entities/news'
-import { getCategoryNewsStories, getTopNewsStories } from '@services/gaurdian'
+import { RootState } from '@redux/store'
+import { getNewsBySearchKeyword } from '@services/gaurdian'
 
 export const Page = () => {
+  const searchKeyword = useSelector(
+    (state: RootState) => state.searchKeyword.key
+  )
+  const router = useRouter()
+
   const [newsList, setNewsList] = useState<ArticleType[]>([])
-  const [otherNews, setOtherNews] = useState<ArticleType[]>([])
   const [sorting, setSorting] = useState<SortType>('newest')
 
   const { sortedData: sortedNewsList } = useSortArrayObjects({
@@ -20,26 +27,24 @@ export const Page = () => {
     setSorting(value)
   }, [])
 
+  if (searchKeyword === '') {
+    router.back()
+  }
+
   useEffect(() => {
-    const fetchData = async () => {
-      const _newsList = await getTopNewsStories()
+    const fetchBySearch = async () => {
+      const _newsList = await getNewsBySearchKeyword(searchKeyword)
       setNewsList(_newsList)
     }
-
-    const fetchOtherNews = async () => {
-      const _otherNews = await getCategoryNewsStories()
-      setOtherNews(_otherNews)
+    if (searchKeyword !== '') {
+      void fetchBySearch()
     }
-
-    void fetchData()
-    void fetchOtherNews()
-  }, [])
+  }, [searchKeyword])
 
   return (
     <div className="pageContent container">
-      <NewsSection
+      <SearchResults
         newsList={sortedNewsList}
-        otherNews={otherNews}
         handleOnChangeSortType={handleOnChangeSortType}
       />
     </div>

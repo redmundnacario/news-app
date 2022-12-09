@@ -1,0 +1,47 @@
+@import 'src/styles/_media_query.scss';
+
+.inputSearchBar {
+  outline: none;
+  border: none;
+  background-color: rgb(33, 82, 164);
+  opacity: 0.8;
+  border-bottom: 3px solid #ffffff;
+  height: 2rem;
+  padding: 20px 24px 20px 24px;
+  font-size: 16px;
+  color: #ffffff;
+  caret-color: #ffffff;
+  width: 160px;
+  @include sm {
+    width: 260px;
+  }
+
+  &::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #ffffff;
+    opacity: 0.6;
+    // opacity: 1; /* Firefox */
+  }
+
+  &:-ms-input-placeholder {
+    opacity: 0.6;
+    /* Internet Explorer 10-11 */
+    color: #ffffff;
+  }
+
+  & ::-ms-input-placeholder {
+    /* Microsoft Edge */
+    opacity: 0.6;
+    color: #ffffff;
+  }
+}
+
+.logoNotClicked {
+  border-bottom: 3px solid #ffffff;
+  display: flex;
+  justify-content: center;
+  width: 50px;
+  color: #ffffff;
+  padding-bottom: 10px;
+  font-size: 20px;
+}

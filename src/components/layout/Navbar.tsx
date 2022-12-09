@@ -8,11 +8,14 @@ import styles from '@styles/components/common/Navbar.module.scss'
 const Navbar = () => {
   return (
     <div className={styles.navbar}>
-      <div className="navContainer px-1">
+      <div className={`container px-1 ${styles.navContainer}`}>
         <Link href={`/`}>
-          <h1 id="title">The Peaks</h1>
+          <h1 className={styles.title}>The Peaks</h1>
         </Link>
-        <SearchBar />
+
+        <div className={styles.searchbar}>
+          <SearchBar />
+        </div>
       </div>
     </div>
   )

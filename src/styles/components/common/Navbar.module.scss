@@ -1,16 +1,23 @@
-.navbar :global {
+.navbar {
   background-color: #09357b;
   height: 100px;
+}
 
-  .navContainer {
-    height: 100%;
-    width: 60%;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
+.navContainer {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  position: relative;
+}
 
-    #title {
-      color: #ffffff;
-    }
-  }
+.title {
+  color: #ffffff;
+}
+
+.searchbar {
+  // display: flex;
+  // justify-content: flex-end;
+  position: absolute;
+  bottom: 0;
+  right: 1rem;
 }
