@@ -88,7 +88,7 @@ const Page = () => {
   useEffect(() => {
     if (article?.main) {
       const doc = new DOMParser().parseFromString(article.main, 'text/xml')
-      const img = doc.firstChild?.firstChild?.nextSibling
+      const img = doc.firstChild?.childNodes[1]
       if (img) {
         const src = (img as Element).getAttribute('src')
         const alt = (img as Element).getAttribute('alt')

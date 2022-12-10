@@ -16,7 +16,7 @@ function App({ Component, pageProps }: AppProps) {
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <Head>
-          <title>The Peaks</title>
+          <title>The Peaks News by Redmund Nacario</title>
           <meta charSet="utf-8" />
           <meta name="viewport" content="width=device-width" />
           <meta name="description" content="For your daily news." />
