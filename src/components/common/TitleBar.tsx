@@ -25,7 +25,9 @@ const TitleBar: FC<TitleBarPropsType> = (props) => {
             onClick={() => router.push('/bookmark')}
             className={styles.actionButton}
           >
-            VIEW BOOKMARK
+            <span>
+              <i className={`fa fa-bookmark ${styles.icon}`}></i>VIEW BOOKMARK
+            </span>
           </button>
         )}
         <Dropdown handleOnChange={handleOnChangeSortType} />

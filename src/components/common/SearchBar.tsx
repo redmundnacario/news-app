@@ -62,7 +62,6 @@ const SearchBar = () => {
       ) : (
         <div className={styles.logoNotClicked}>
           <i className="fa fa-search"></i>
-          {/* <i className="fa fa-bookmark"></i> */}
         </div>
       )}
     </div>

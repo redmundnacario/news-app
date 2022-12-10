@@ -83,7 +83,10 @@ const Page = () => {
             className={styles.actionButton}
             onClick={() => handleAddOrRemoveBookmark()}
           >
-            {isBookmarked ? 'REMOVE BOOKMARK' : 'ADD BOOKMARK'}
+            <span>
+              <i className={`fa fa-bookmark ${styles.icon}`}></i>
+              {isBookmarked ? 'REMOVE BOOKMARK' : 'ADD BOOKMARK'}
+            </span>
           </button>
           <p>{article.firstPublicationDate}</p>
           <h1 className={styles.title}>{article.headline}</h1>
