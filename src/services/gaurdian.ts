@@ -13,7 +13,8 @@ export const getTopNewsStories = async (
   )
     .then((response) => response.json())
     .then((data) => data.response.results)
-    .catch(() => {
+    .catch((e) => {
+      console.log(e)
       throw new Error('Something went wrong in fetching news')
     })
 

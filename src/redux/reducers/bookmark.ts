@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 
 import { ArticleType } from '@models/entities/news'
-import { initialState } from '@redux/state/bookmark'
+import { initialState } from '@store/state/bookmark'
 
 export const bookmarkSlice = createSlice({
   name: 'bookmark',

@@ -12,6 +12,7 @@ const Dropdown: FC<DropdownPropsType> = (props) => {
   return (
     <div>
       <select
+        data-testid={'select-sort-type'}
         className={styles.inputSelect}
         name="sort-type"
         id="sort-type"
@@ -20,8 +21,12 @@ const Dropdown: FC<DropdownPropsType> = (props) => {
           handleOnChange(e.target.value as SortType)
         }}
       >
-        <option value="newest">Newest first</option>
-        <option value="oldest">Oldest first</option>
+        <option value="newest" data-testid={'newest-option'}>
+          Newest first
+        </option>
+        <option value="oldest" data-testid={'oldest-option'}>
+          Oldest first
+        </option>
       </select>
     </div>
   )

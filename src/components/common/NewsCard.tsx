@@ -1,9 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
-import { ArticleType } from '@models/entities/news'
+import Link from 'next/link'
 import React, { FC } from 'react'
 
+import { ArticleType } from '@models/entities/news'
+
 import styles from '@styles/components/common/NewsCard.module.scss'
-import Link from 'next/link'
 
 type NewsCardPropsType = {
   data: ArticleType
@@ -32,8 +33,10 @@ const NewsCard: FC<NewsCardPropsType> = (props) => {
             hideImage ? styles.newsCardFooterHiddenImage : styles.newsCardFooter
           }
         >
-          <p>{data.headline}</p>
-          {!hideTrailText && <span>{data.trailText}</span>}
+          <p data-testid={'card-headline'}>{data.headline}</p>
+          {!hideTrailText && (
+            <span data-testid={'card-text'}>{data.trailText}</span>
+          )}
         </div>
       </div>
     </Link>

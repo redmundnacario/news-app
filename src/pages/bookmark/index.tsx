@@ -6,7 +6,7 @@ import Spinner from '@components/common/Spinner'
 import TitleBar from '@components/common/TitleBar'
 import useSortArrayObjects from '@hooks/useSortArrayObjects'
 import { SortType } from '@models/entities/news'
-import { RootState } from '@redux/store'
+import { RootState } from '@store/store'
 
 import styles from '@styles/components/common/NewsSection.module.scss'
 

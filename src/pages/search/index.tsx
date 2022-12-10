@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux'
 import SearchResults from '@components/common/SearchResults'
 import useSortArrayObjects from '@hooks/useSortArrayObjects'
 import { ArticleType, SortType } from '@models/entities/news'
-import { RootState } from '@redux/store'
+import { RootState } from '@store/store'
 import { getNewsBySearchKeyword } from '@services/gaurdian'
 
 export const Page = () => {

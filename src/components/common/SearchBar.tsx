@@ -2,8 +2,8 @@ import { useRouter } from 'next/router'
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { setSearchKeyword } from '@redux/reducers/searchKeyword'
-import { RootState } from '@redux/store'
+import { setSearchKeyword } from '@store/reducers/searchKeyword'
+import { RootState } from '@store/store'
 
 import styles from '@styles/components/common/SearchBar.module.scss'
 
@@ -50,6 +50,7 @@ const SearchBar = () => {
     <div
       ref={searchBarRef}
       onClick={() => setIsOpen(!isOpen ? !isOpen : isOpen)}
+      data-testid="searchbar"
     >
       {isOpen ? (
         <input
@@ -58,10 +59,11 @@ const SearchBar = () => {
           onChange={(e) => handeOnchangeSearchKeyword(e.target.value)}
           defaultValue={searchKeyword}
           placeholder="Search all news"
+          data-testid="searchbar-open"
         />
       ) : (
         <div className={styles.logoNotClicked}>
-          <i className="fa fa-search"></i>
+          <i className="fa fa-search" data-testid="searchbar-closed"></i>
         </div>
       )}
     </div>

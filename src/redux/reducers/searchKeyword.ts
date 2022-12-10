@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 
-import { initialState } from '@redux/state/searchKeyword'
+import { initialState } from '@store/state/searchKeyword'
 
 export const searchKeywordSlice = createSlice({
   name: 'bookmark',
