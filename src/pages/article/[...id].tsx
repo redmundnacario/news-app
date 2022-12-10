@@ -28,6 +28,10 @@ const Page = () => {
   const newLink = id ? (typeof id === 'object' ? id.join('/') : id) : undefined
 
   const [article, setArticle] = useState<ArticleType | undefined>(undefined)
+  const [bodyParsed, setBodyParsed] = useState<string | undefined>(undefined)
+  const [image, setImage] = useState<{ src: string; alt: string } | undefined>(
+    undefined
+  )
 
   const handleAddOrRemoveBookmark = () => {
     if (article) {
@@ -81,9 +85,21 @@ const Page = () => {
     }
   }, [newLink])
 
-  const [image, setImage] = useState<{ src: string; alt: string } | undefined>(
-    undefined
-  )
+  // Fixes image and video size within the article page
+  useEffect(() => {
+    if (article?.body) {
+      let newBody = article?.body.replace(
+        /(?<=width).*?(?=class="gu-image")/g,
+        `="100%" height="auto"`
+      )
+      newBody = newBody.replace(
+        /(?<=<iframe).*?(?=src)/g,
+        ` class="flex-video" width="90%" `
+      )
+
+      setBodyParsed(newBody)
+    }
+  }, [article?.body])
 
   useEffect(() => {
     if (article?.main) {
@@ -102,7 +118,7 @@ const Page = () => {
   return article ? (
     <div className="pageContent container px-1 mt-1">
       <div className={`row mb-1 mt-2 ${styles.verdanaText}`}>
-        <div className={`col-lg-8 ${styles.titleContainer}`}>
+        <div className={`col col-sm-12 col-lg-8 ${styles.titleContainer}`}>
           <button
             className={styles.actionButton}
             onClick={() => handleAddOrRemoveBookmark()}
@@ -119,12 +135,14 @@ const Page = () => {
         </div>
       </div>
       <div className={`row mb-2 ${styles.verdanaText}`}>
-        <div
-          dangerouslySetInnerHTML={{ __html: article.body }}
-          className={`col-lg-8 ${styles.verdanaText}`}
-        ></div>
+        {bodyParsed && (
+          <div
+            dangerouslySetInnerHTML={{ __html: bodyParsed }}
+            className={`col col-sm-12 col-lg-8 ${styles.verdanaText}`}
+          ></div>
+        )}
         {image && (
-          <div className="col-lg-4 px-1">
+          <div className="col col-sm-12 col-lg-4 px-1">
             <img src={image.src} alt={image.alt} className={styles.image} />
             <p className={styles.alt}>{image.alt}</p>
           </div>

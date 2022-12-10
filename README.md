@@ -8,7 +8,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ### Deployment
 
-Deployed at: [the-peaks-news-by-redmund-nacario.netlify.app](the-peaks-news-by-redmund-nacario.netlify.app)
+Deployed at: [https://the-peaks-news-by-redmund-nacario.netlify.app/](https://the-peaks-news-by-redmund-nacario.netlify.app/)
 
 <br />
 

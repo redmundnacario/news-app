@@ -66,11 +66,34 @@ a {
 
 .mb-2 {
   margin-bottom: 1rem;
-  @include md {
+  @include lg {
     margin-bottom: 2rem;
   }
 }
 
-.mb-1 {
+.mbs-1 {
   margin-bottom: 1rem;
+}
+
+.mb-1 {
+  margin-bottom: 0.5rem;
+  @include lg {
+    margin-bottom: 1rem;
+  }
+}
+
+.flex-video {
+  height: 180px;
+  @include sm {
+    height: 350px;
+  }
+  @include md {
+    height: 400px;
+  }
+  @include lg {
+    height: 300px;
+  }
+  @include xl {
+    height: 400px;
+  }
 }

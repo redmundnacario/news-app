@@ -23,28 +23,28 @@ const NewsSection: FC<NewsSectionPropsType> = (props) => {
           title={'Top stories'}
           handleOnChangeSortType={handleOnChangeSortType}
         />
-        <div className="row">
+        <div className="row mb-1">
           <div
-            className={`col px-1 col-lg-6 col-sm-12 mb-1 ${styles.mainStory}`}
+            className={`col px-1 col-lg-6 col-sm-12 mbs-1 ${styles.mainStory}`}
           >
             <NewsCard data={newsList[0]} />
           </div>
           <div className={`col col-lg-6 col-sm-12 mb-1 ${styles.sideStories}`}>
-            <div className={`col px-1 col-sm-12 ${styles.sideStory}`}>
+            <div className={`col col-sm-12 ${styles.sideStory}`}>
               <NewsCard data={newsList[1]} hideTrailText={true} />
             </div>
-            <div className={`col px-1 col-sm-12 ${styles.sideStory}`}>
+            <div className={`col col-sm-12 ${styles.sideStory}`}>
               <NewsCard data={newsList[2]} hideTrailText={true} />
             </div>
 
-            <div className={`col px-1 col-sm-12 ${styles.hiddenImageStory}`}>
+            <div className={`col col-sm-12 ${styles.hiddenImageStory}`}>
               <NewsCard
                 data={newsList[3]}
                 hideTrailText={true}
                 hideImage={true}
               />
             </div>
-            <div className={`col px-1 col-sm-12 ${styles.hiddenImageStory}`}>
+            <div className={`col col-sm-12 ${styles.hiddenImageStory}`}>
               <NewsCard
                 data={newsList[4]}
                 hideTrailText={true}
