@@ -4,6 +4,8 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import Spinner from '@components/common/Spinner'
+import Alert, { AlertPropsType } from '@components/layout/Alert'
+import { useAlertContext } from '@hoc/withAlert'
 import { ArticleType } from '@models/entities/news'
 import { append, remove } from '@redux/reducers/bookmark'
 import { RootState } from '@redux/store'
@@ -14,6 +16,8 @@ import styles from '@styles/article.module.scss'
 const Page = () => {
   const dispatch = useDispatch()
   const bookmark = useSelector((state: RootState) => state.bookmark.articleList)
+
+  const { setShowAlert, setAlertElementParams } = useAlertContext()
 
   const [isBookmarked, setIsBookmarked] = useState<boolean | undefined>(
     undefined
@@ -32,6 +36,25 @@ const Page = () => {
       } else {
         dispatch(append(article))
       }
+      setAlertElementParams({
+        element: (
+          <Alert
+            variant={isBookmarked ? 'danger' : 'success'}
+            content={
+              <span style={{ color: '#ffffff', fontSize: '14px' }}>
+                <i
+                  className="fa fa-bookmark"
+                  style={{ marginRight: '12px' }}
+                ></i>
+                {isBookmarked ? 'REMOVED FROM BOOKMARKS' : 'SAVED TO BOOKMARKS'}
+              </span>
+            }
+          />
+        ) as unknown as React.FC<AlertPropsType>,
+        autoDismissible: true,
+        timeDelay: 1000,
+      })
+      setShowAlert(true)
     }
   }
 
@@ -61,6 +84,7 @@ const Page = () => {
   const [image, setImage] = useState<{ src: string; alt: string } | undefined>(
     undefined
   )
+
   useEffect(() => {
     if (article?.main) {
       const doc = new DOMParser().parseFromString(article.main, 'text/xml')

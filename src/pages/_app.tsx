@@ -4,13 +4,14 @@ import { Provider } from 'react-redux'
 import { store, persistor } from '@redux/store'
 import { PersistGate } from 'redux-persist/integration/react'
 
-import Navbar from 'src/components/layout/Navbar'
-import Footer from 'src/components/layout/Footer'
+import Navbar from '@components/layout/Navbar'
+import Footer from '@components/layout/Footer'
+import { withAlert } from '@hoc/withAlert'
 
 import '@styles/globals.scss'
 import '@styles/grid.scss'
 
-export default function App({ Component, pageProps }: AppProps) {
+function App({ Component, pageProps }: AppProps) {
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
@@ -34,3 +35,5 @@ export default function App({ Component, pageProps }: AppProps) {
     </Provider>
   )
 }
+
+export default withAlert(App)

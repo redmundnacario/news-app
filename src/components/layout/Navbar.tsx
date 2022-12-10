@@ -3,7 +3,7 @@ import React from 'react'
 
 import SearchBar from '@components/common/SearchBar'
 
-import styles from '@styles/components/common/Navbar.module.scss'
+import styles from '@styles/components/layout/Navbar.module.scss'
 
 const Navbar = () => {
   return (

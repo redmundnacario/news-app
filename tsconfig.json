@@ -18,6 +18,7 @@
     "paths": {
       "@components/*": ["src/components/*"],
       "@configs/*": ["src/configs/*"],
+      "@hoc/*": ["src/hoc/*"],
       "@hooks/*": ["src/hooks/*"],
       "@models/*": ["src/models/*"],
       "@services/*": ["src/services/*"],
