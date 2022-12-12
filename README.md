@@ -28,6 +28,8 @@ Install the dependencies and devDependencies
 npm install
 ```
 
+Create "env.local" file and set the variable present in "sample.env.local".
+
 Run local server
 
 ```bash
